@@ -15,6 +15,7 @@ import {
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import { ProfileComponent } from './profile/profile.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE ') > -1 ||
@@ -43,9 +44,9 @@ const routes: Routes = [
     MsalModule.forRoot(
       new PublicClientApplication({
         auth: {
-          clientId: '387673a2-8cc9-480d-b86d-571e830acc9d',
-          authority: 'https://login.microsoftonline.com/common', // This is your tenant ID
-          redirectUri: 'http://localhost:4200', // This is your redirect URI
+          clientId: environment.clientId,
+          authority: environment.tenantId, // This is your tenant ID
+          redirectUri: environment.redirectUrl, // This is your redirect URI
         },
         cache: {
           cacheLocation: 'localStorage',

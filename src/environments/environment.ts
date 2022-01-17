@@ -4,6 +4,11 @@
 
 export const environment = {
   production: false,
+  graphEndpoint: 'https://graph.microsoft.com/v1.0/me',
+  logoutRedirectUrl: 'http://localhost:4200',
+  clientId: '387673a2-8cc9-480d-b86d-571e830acc9d',
+  tenantId: 'https://login.microsoftonline.com/common',
+  redirectUrl: 'http://localhost:4200',
 };
 
 /*

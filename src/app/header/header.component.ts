@@ -7,6 +7,7 @@ import {
 } from '@azure/msal-angular';
 import { InteractionStatus, RedirectRequest } from '@azure/msal-browser';
 import { filter, Subject, takeUntil } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -58,7 +59,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout(): void {
     // Add log out function here
     this.authService.logoutRedirect({
-      postLogoutRedirectUri: 'http://localhost:4200',
+      postLogoutRedirectUri: environment.logoutRedirectUrl,
     });
   }
 }
