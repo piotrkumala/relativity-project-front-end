@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   isIframe = false;
-  ngOnInit() {
+  ngOnInit(): void {
     this.isIframe = window !== window.parent && !window.opener;
   }
 }

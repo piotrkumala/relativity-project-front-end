@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private store: Store<State>,
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.broadcastService.inProgress$
       .pipe(
         filter(
@@ -76,7 +76,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  removeItemFromBasket(item: BasketItem) {
+  removeItemFromBasket(item: BasketItem): void {
     this.store.dispatch(removeItemFromBasket({ item: item }));
   }
 }

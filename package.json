@@ -10,7 +10,7 @@
     "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "extract-i18n": "ng extract-i18n --output-path src/app/locales",
     "prettier": "prettier -c src",
-    "lint": "eslint . --ext .js,.ts "
+    "lint": "eslint . --ext .ts "
   },
   "private": true,
   "dependencies": {

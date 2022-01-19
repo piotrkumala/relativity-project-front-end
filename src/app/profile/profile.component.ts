@@ -19,11 +19,11 @@ export class ProfileComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getProfile();
   }
 
-  getProfile() {
+  getProfile(): void {
     this.http.get(environment.graphEndpoint).subscribe((profile) => {
       this.profile = profile;
     });

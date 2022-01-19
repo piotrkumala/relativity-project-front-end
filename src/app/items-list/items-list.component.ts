@@ -47,11 +47,11 @@ export class ItemsListComponent implements OnInit {
       });
   }
 
-  setLoginDisplay() {
+  setLoginDisplay(): void {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
   }
 
-  addItem(item: BasketItem) {
+  addItem(item: BasketItem): void {
     this.store.dispatch(addItemToBasket({ item: item }));
   }
 }

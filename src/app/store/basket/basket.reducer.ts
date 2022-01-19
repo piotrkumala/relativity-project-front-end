@@ -27,7 +27,7 @@ const _basketReducer = createReducer(
   on(removeItemFromBasket, (state, { item }) => ({
     ...state,
     items:
-      state.items.find((x) => x.id === item.id)!.amount === 1
+      state.items.find((x) => x.id === item.id)?.amount === 1
         ? state.items.filter((x) => x.id !== item.id)
         : state.items.map((x) =>
             x.id === item.id ? { ...x, amount: x.amount - 1 } : x,
