@@ -2,10 +2,10 @@ mat-toolbar {
   display: flex;
   justify-content: space-between;
 
-  div{
+  div {
     display: flex;
     align-items: center;
-    button{
+    button {
       padding-left: 10px;
     }
   }
@@ -15,9 +15,8 @@ mat-toolbar {
   padding: 0 10px;
 
   .basket-list {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-
+}

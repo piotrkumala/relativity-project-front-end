@@ -2,7 +2,12 @@
   <a class="title" href="/">{{ title }}</a>
 
   <div>
-    <button mat-icon-button [matMenuTriggerFor]='menu' [matBadge]="basketItems.length" matBadgeColor="warn">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      [matBadge]="basketItems.length"
+      matBadgeColor="warn"
+    >
       <mat-icon>shopping_basket</mat-icon>
     </button>
     <button mat-icon-button *ngIf="!loginDisplay" (click)="login()">
@@ -15,15 +20,20 @@
 </mat-toolbar>
 
 <mat-menu #menu>
-  <p class='basket' *ngIf='basketItems.length === 0'>Koszyk pusty!</p>
-  <div *ngIf='basketItems.length > 0' class='basket'>
-    <div *ngFor='let item of basketItems' class='basket-list'>
-      <div>{{item.name}} - {{item.amount}}</div>
-      <button mat-icon-button color='accent' (click)='removeItemFromBasket(item)'><mat-icon>remove</mat-icon></button>
+  <p class="basket" *ngIf="basketItems.length === 0">Koszyk pusty!</p>
+  <div *ngIf="basketItems.length > 0" class="basket">
+    <div *ngFor="let item of basketItems" class="basket-list">
+      <div>{{ item.name }} - {{ item.amount }}</div>
+      <button
+        mat-icon-button
+        color="accent"
+        (click)="removeItemFromBasket(item)"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
     </div>
-    <button mat-button color='accent' routerLink='order'>
+    <button mat-button color="accent" routerLink="order">
       Złóż zamówienie
     </button>
   </div>
-
 </mat-menu>
