@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   loginDisplay = false;
   basketItems: BasketItem[] = [];
   private readonly _destroying$ = new Subject<void>();
-  private subscription!: Subscription;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
