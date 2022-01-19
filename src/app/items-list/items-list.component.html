@@ -1,8 +1,6 @@
-<div *ngIf="!loginDisplay">
-  <p>Please sign-in to see your profile information.</p>
-</div>
-
-<div *ngIf="loginDisplay">
-  <p>Login successful!</p>
-  <p>Request your profile information by clicking Profile above.</p>
-</div>
+<mat-list>
+  <mat-list-item *ngFor='let item of itemsList'>
+    {{item.name}}
+    <button mat-icon-button (click)='addItem(item)'><mat-icon>add</mat-icon></button>
+  </mat-list-item>
+</mat-list>

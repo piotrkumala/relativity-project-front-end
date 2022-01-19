@@ -16,6 +16,8 @@ import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import { ProfileComponent } from './profile/profile.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/state';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE ') > -1 ||
@@ -37,6 +39,7 @@ const routes: Routes = [
     RouterModule,
     HeaderModule,
     ItemsListModule,
+    StoreModule.forRoot(reducers),
     RouterModule.forRoot(routes, {
       initialNavigation: !isIframe ? 'enabled' : 'disabled', // Don't perform initial navigation in iframes
     }),

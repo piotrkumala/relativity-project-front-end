@@ -6,6 +6,10 @@ import {
   EventType,
   InteractionStatus,
 } from '@azure/msal-browser';
+import { addItemToBasket } from '../store/basket/basket.actions';
+import { Store } from '@ngrx/store';
+import { State } from '../store/state';
+import { BasketItem } from '../models/BasketItem';
 
 @Component({
   selector: 'app-items-list',
@@ -14,10 +18,11 @@ import {
 })
 export class ItemsListComponent implements OnInit {
   loginDisplay = false;
-
+  itemsList = [{ id: '1', amount: 1, name: 'test' }];
   constructor(
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
+    private store: Store<State>,
   ) {}
 
   ngOnInit(): void {
@@ -44,5 +49,9 @@ export class ItemsListComponent implements OnInit {
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
+  }
+
+  addItem(item: BasketItem) {
+    this.store.dispatch(addItemToBasket({ item: item }));
   }
 }

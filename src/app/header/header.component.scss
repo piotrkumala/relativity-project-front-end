@@ -1,0 +1,23 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+
+  div{
+    display: flex;
+    align-items: center;
+    button{
+      padding-left: 10px;
+    }
+  }
+}
+
+.basket {
+  padding: 0 10px;
+
+  .basket-list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+

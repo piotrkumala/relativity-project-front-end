@@ -6,8 +6,12 @@ import {
   MsalService,
 } from '@azure/msal-angular';
 import { InteractionStatus, RedirectRequest } from '@azure/msal-browser';
-import { filter, Subject, takeUntil } from 'rxjs';
+import { filter, Subject, Subscription, takeUntil } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { State } from '../store/state';
+import { Store } from '@ngrx/store';
+import { BasketItem } from '../models/BasketItem';
+import { removeItemFromBasket } from '../store/basket/basket.actions';
 
 @Component({
   selector: 'app-header',
@@ -17,12 +21,15 @@ import { environment } from '../../environments/environment';
 export class HeaderComponent implements OnInit, OnDestroy {
   title = 'Relativity Project';
   loginDisplay = false;
+  basketItems: BasketItem[] = [];
   private readonly _destroying$ = new Subject<void>();
+  private subscription!: Subscription;
 
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private broadcastService: MsalBroadcastService,
     private authService: MsalService,
+    private store: Store<State>,
   ) {}
 
   ngOnInit() {
@@ -36,11 +43,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.setLoginDisplay();
       });
+
+    this.subscription = this.store.select('basket').subscribe((basket) => {
+      if (!basket) return;
+      this.basketItems = basket.items;
+    });
   }
 
   ngOnDestroy(): void {
     this._destroying$.next(undefined);
     this._destroying$.complete();
+    this.subscription.unsubscribe();
   }
 
   login(): void {
@@ -61,5 +74,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.logoutRedirect({
       postLogoutRedirectUri: environment.logoutRedirectUrl,
     });
+  }
+
+  removeItemFromBasket(item: BasketItem) {
+    this.store.dispatch(removeItemFromBasket({ item: item }));
   }
 }
