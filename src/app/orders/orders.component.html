@@ -1,9 +1,9 @@
 <mat-list>
-  <mat-list-item  *ngFor="let order of orders">
-    Order nr: {{order.id}}
+  <mat-list-item *ngFor="let order of orders">
+    Order nr: {{ order.id }}
     Items: &nbsp;
     <div *ngFor="let item of order.orderItems">
-       {{item.item.name}} - ${{item.amount * item.item.price}}&nbsp;
-    </div >
-  </mat-list-item >
+      {{ item.item.name }} - ${{ item.amount * item.item.price }}&nbsp;
+    </div>
+  </mat-list-item>
 </mat-list>
