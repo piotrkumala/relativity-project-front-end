@@ -6,4 +6,6 @@ export const environment = {
   tenantId: 'https://login.microsoftonline.com/common',
   redirectUrl: 'http://localhost:4200',
   itemsEndpoint: '',
+  placeOrderEndpoint: '',
+  getOrders: '',
 };
