@@ -18,6 +18,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/state';
+import { OrdersComponent } from './orders/orders.component';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE ') > -1 ||
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'list', component: ItemsListComponent },
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: 'profile', component: ProfileComponent, canActivate: [MsalGuard] },
+  { path: 'orders', component: OrdersComponent, canActivate: [MsalGuard] },
 ];
 
 @NgModule({

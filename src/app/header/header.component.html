@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <a class="title" href="/">{{ title }}</a>
-
+  <div *ngIf="loginDisplay" routerLink="orders">Orders</div>
   <div>
     <button
       mat-icon-button
