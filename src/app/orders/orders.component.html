@@ -1,5 +1,5 @@
 <div *ngFor="let order of orders">
   <div *ngFor="let item of order.orderItems">
-    {{item.item.name}} - {{item.item.price * item.amount}}
+    {{ item.item.name }} - {{ item.item.price * item.amount }}
   </div>
 </div>
