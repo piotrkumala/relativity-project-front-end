@@ -9,6 +9,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -48,6 +49,7 @@ describe('HeaderComponent', () => {
         MatToolbarModule,
         MatIconModule,
         MatMenuModule,
+        MatSnackBarModule,
       ],
       providers: [provideMockStore({ initialState })],
     }).compileComponents();

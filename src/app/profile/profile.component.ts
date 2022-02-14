@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-
-type ProfileType = {
-  givenName?: string;
-  surname?: string;
-  userPrincipalName?: string;
-  id?: string;
-};
+import { ProfileType } from '../models/ProfileType';
 
 @Component({
   selector: 'app-profile',

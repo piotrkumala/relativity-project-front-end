@@ -5,6 +5,7 @@ import { HeaderModule } from './header/header.module';
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import { environment } from '../environments/environment';
 import { provideMockStore } from '@ngrx/store/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   const initialState = { basket: { items: [] } };
@@ -39,6 +40,7 @@ describe('AppComponent', () => {
             ]),
           },
         ),
+        HttpClientTestingModule,
       ],
       providers: [provideMockStore({ initialState })],
     }).compileComponents();

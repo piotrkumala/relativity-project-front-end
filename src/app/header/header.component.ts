@@ -11,7 +11,13 @@ import { environment } from '../../environments/environment';
 import { State } from '../store/state';
 import { Store } from '@ngrx/store';
 import { BasketItem } from '../models/BasketItem';
-import { removeItemFromBasket } from '../store/basket/basket.actions';
+import {
+  removeItemFromBasket,
+  setBasket,
+} from '../store/basket/basket.actions';
+import { HttpClient } from '@angular/common/http';
+import { ProfileType } from '../models/ProfileType';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-header',
@@ -30,6 +36,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private broadcastService: MsalBroadcastService,
     private authService: MsalService,
     private store: Store<State>,
+    private http: HttpClient,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -78,5 +86,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   removeItemFromBasket(item: BasketItem): void {
     this.store.dispatch(removeItemFromBasket({ item: item }));
+  }
+
+  placeOrder(): void {
+    this.http
+      .get(environment.graphEndpoint)
+      .subscribe((profile: ProfileType) => {
+        this.http
+          .post(environment.placeOrderEndpoint, {
+            UserId: profile.id,
+            OrderItems: this.basketItems.map((x) => ({
+              Amount: x.amount,
+              Item: { Id: x.id, Name: x.name, Price: x.price },
+            })),
+          })
+          .subscribe((next) => {
+            console.log(next);
+            this.store.dispatch(
+              setBasket({ basket: { userId: profile.id ?? '', items: [] } }),
+            );
+            this.snackBar.open('Order placed successfully!', 'Close');
+          });
+      });
   }
 }
