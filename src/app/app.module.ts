@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/state';
 import { OrdersComponent } from './orders/orders.component';
+import { OrdersModule } from './orders/orders.module';
 
 const isIE =
   window.navigator.userAgent.indexOf('MSIE ') > -1 ||
@@ -41,6 +42,7 @@ const routes: Routes = [
     RouterModule,
     HeaderModule,
     ItemsListModule,
+    OrdersModule,
     StoreModule.forRoot(reducers),
     RouterModule.forRoot(routes, {
       initialNavigation: !isIframe ? 'enabled' : 'disabled', // Don't perform initial navigation in iframes

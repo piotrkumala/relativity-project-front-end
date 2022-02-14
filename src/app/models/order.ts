@@ -6,6 +6,7 @@ type OrderItem = {
 };
 
 export type Order = {
+  id: number;
   userId: string;
   orderItems: OrderItem[];
 };
