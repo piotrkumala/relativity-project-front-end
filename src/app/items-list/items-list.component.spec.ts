@@ -5,6 +5,7 @@ import { MsalModule } from '@azure/msal-angular';
 import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import { environment } from '../../environments/environment';
 import { provideMockStore } from '@ngrx/store/testing';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('ItemsListComponent', () => {
   let component: ItemsListComponent;
@@ -40,6 +41,7 @@ describe('ItemsListComponent', () => {
             ]),
           },
         ),
+        HttpClientTestingModule
       ],
       providers: [provideMockStore({ initialState })],
     }).compileComponents();
