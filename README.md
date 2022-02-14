@@ -1,31 +1,25 @@
-# RelativityProjectFrontEnd
+# Projekt "Podstawy tworzenia aplikacji w oparciu o usługi Azure (Relativity) "
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
+Ten projekt został stworzony na przedmiot "Podstawy tworzenia aplikacji w oparciu o usługi Azure (Relativity)". 
+W tym dokumencie przedstawione zostaną funkcjonalności dostarczane przez projekt oraz infrastruktura rozwiązania 
+ze szczególnym naciskiem na wykorzystane komponenty chmury Microsoft Azure. 
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change
-any of the source files.
+## Opis rozwiązania
+Stworzone rozwiązanie to bardzo uproszczony sklep internetowy pozwalający użytkownikom na składanie zamówień 
+oraz przeglądanie już złożonych. 
+Lista wszystkich dostępnych zamówień jest dostępna dla anonimowych użytkowników, ale aby składać i przeglądać zamówienia 
+wymagane jest zalogowanie się do systemu. Logowanie odbywa się za pomocą konta Microsoft, więc nie trzeba pamiętać 
+dodatkowego hasła. Nawigacja w aplikacji odbywa się za pomocą górnej belki, na której znajdują się odnośniki do strony głównej (Relativity Project),
+oraz listy złożonych zamówień (Orders). Na głównej belce znajduje się również koszyk zakupowy oraz przycisk do logowania i
+wylogowywania z aplikacji. 
 
-## Code scaffolding
+## Architektura rozwiązania
+Rozwiązanie zostało wdrożone w chmurze Microsoft Azure i składa się z kilku komunikujących się ze sobą pomniejszych komponentów:
+- Angular SPA front-end (Azure App Service for Node + Application Insights)
+- .NET serverless (Azure Functions + Application Insights)
+- SQL database (Azure SQL)
+- Identity provider (Azure AD)
 
-Run `ng generate component component-name` to generate a new component. You can also
-use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a
-package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out
-the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Diagram połączeń pomiędzy komponentami
+![](img/diagram.png)
