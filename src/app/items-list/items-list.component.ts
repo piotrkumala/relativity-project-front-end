@@ -10,6 +10,9 @@ import { addItemToBasket } from '../store/basket/basket.actions';
 import { Store } from '@ngrx/store';
 import { State } from '../store/state';
 import { BasketItem } from '../models/BasketItem';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
+import {ItemsList} from "../models/ItemsList";
 
 @Component({
   selector: 'app-items-list',
@@ -18,11 +21,12 @@ import { BasketItem } from '../models/BasketItem';
 })
 export class ItemsListComponent implements OnInit {
   loginDisplay = false;
-  itemsList = [{ id: '1', amount: 1, name: 'test' }];
+  itemsList: BasketItem[] = [];
   constructor(
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
     private store: Store<State>,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +49,8 @@ export class ItemsListComponent implements OnInit {
       .subscribe(() => {
         this.setLoginDisplay();
       });
+    this.http.get(environment.itemsEndpoint)
+      .subscribe((data)=> this.itemsList = (data as ItemsList[]).map(x=> ({...x, amount: 1 })))
   }
 
   setLoginDisplay(): void {

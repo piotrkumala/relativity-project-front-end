@@ -9,6 +9,7 @@ export const environment = {
   clientId: '',
   tenantId: 'https://login.microsoftonline.com/common',
   redirectUrl: 'http://localhost:4200',
+  itemsEndpoint: 'https://pk-serverless.azurewebsites.net/api/ItemsList?code=lN9KZ4bHZ60eexYNgaBnsIihUEASmGtAs/PDcoWnIDFQljZNrCq9qw=='
 };
 
 /*
