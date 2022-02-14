@@ -9,7 +9,7 @@ export const environment = {
   clientId: '',
   tenantId: 'https://login.microsoftonline.com/common',
   redirectUrl: 'http://localhost:4200',
-  itemsEndpoint: ''
+  itemsEndpoint: '',
 };
 
 /*
