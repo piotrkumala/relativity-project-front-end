@@ -49,15 +49,13 @@ export class ItemsListComponent implements OnInit {
       .subscribe(() => {
         this.setLoginDisplay();
       });
-    this.http
-      .get(environment.itemsEndpoint)
-      .subscribe(
-        (data) =>
-          (this.itemsList = (data as ItemsList[]).map((x) => ({
-            ...x,
-            amount: 1,
-          }))),
-      );
+    this.http.get(environment.itemsEndpoint).subscribe(
+      (data) =>
+        (this.itemsList = (data as ItemsList[]).map((x) => ({
+          ...x,
+          amount: 1,
+        }))),
+    );
   }
 
   setLoginDisplay(): void {
